@@ -1,8 +1,13 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 function callbacks() {
-    const cbs = [];
+    var cbs = [];
 
     function callHandler() {
-        for (let i = 0, l = cbs.length; i < l; i++) {
+        for (var i = 0, l = cbs.length; i < l; i++) {
             cbs[i].apply(cbs, arguments);
         }
     }
@@ -11,8 +16,8 @@ function callbacks() {
         cbs.push(cb);
     };
     callHandler.off = function (cb) {
-        const pos = cbs.indexOf(cb);
-        (pos != -1) && (cbs.splice(pos, 1));
+        var pos = cbs.indexOf(cb);
+        pos != -1 && cbs.splice(pos, 1);
     };
     callHandler.getLength = function () {
         return cbs.length;
@@ -23,4 +28,4 @@ function callbacks() {
     return callHandler;
 }
 
-export default callbacks;
+exports.default = callbacks;
